@@ -22,7 +22,7 @@ const input = () => {
     while(true){
         const a = prompt('write input: ');
         let aNum = parseInt(a);
-        if(isNaN(aNum) || aNum<=50 || aNum>100){
+        if(isNaN(aNum) || aNum<=0 || aNum>100){
             console.log('try again.');
             }
             else{
@@ -108,21 +108,53 @@ const input = () => {
                 console.log(rowStr)
             }
         }
-
-        const getWinning = () => {
-            
+    
+    const getWinning = (transposes, bet, lineNum) => {
+        let winnings = 0;
+    
+        for(let transpose = 0; transpose < lineNum; transpose++) {
+            const syms = transposes[transpose];
+            let same = true;
+    
+            for(const sym of syms) {
+                if(sym !== syms[0]) {
+                    same = false;
+                    break;
+                }
+            }
+    
+            if(same) {
+                winnings += bet * SYMBOLS_VALUES[syms[0]];
+            }
         }
+    
+        return winnings;
+    }
 
-const depAmt = input();
+const game = () => {
+    let depAmt = input();
+
+while(true){
+console.log('you have: ' + depAmt);
 const NoOfLines = lines();
 const bet = bettingAmt(depAmt, NoOfLines);
+depAmt-= bet * NoOfLines;
 const poopoo = spin();
 const peepee = transpose(poopoo);
-console.log(poopoo);
-console.log(peepee);
-const rows = printRows(peepee)
+const printrows = printRows(peepee);
+const winnings = getWinning(peepee, bet, NoOfLines);
+console.log('you won ' + winnings);
 
+if(depAmt <= 0){
+    console.log('you ran out of money');
+}
+const playagain = prompt('you wanna play again? y/n: ')
+if(playagain != 'y'){
+    break;
+} 
+}
+}
 
-
+game();
 
 
