@@ -1,0 +1,9 @@
+real real real.
+
+Day-1
+
+alert("Alert incoming 123 123")  \\gives alert. duh.
+
+document.body.innerHTML = "Hello";
+
+

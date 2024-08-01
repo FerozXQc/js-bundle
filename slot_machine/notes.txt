@@ -1,0 +1,6 @@
+take money
+take no of lines they gon bet
+spin
+if win money ++ in their credit
+if they lsot it will be deducted
+ask if they wanna exit

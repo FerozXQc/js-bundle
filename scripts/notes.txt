@@ -1,0 +1,3 @@
+constructors are functions used to make multiple objects.
+classes are more structured and cleaner way to type code.
+
